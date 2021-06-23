@@ -1,9 +1,15 @@
 package com.example.messagingstompwebsocket;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
+
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.util.HtmlUtils;
+
+import io.netty.channel.local.LocalEventLoopGroup;
 
 @Controller
 public class GreetingController {
@@ -26,6 +32,11 @@ public class GreetingController {
   @MessageMapping("/chat")
   @SendTo("/topic/chat")
   public Chat chat(Chat chat) throws Exception {
-    return new Chat(chat.getName(), chat.getMessage());
+	  
+	  
+	  Date date = new Date(System.currentTimeMillis()); 
+	  SimpleDateFormat format = new SimpleDateFormat("HH:mm"); 
+	  String now_time = format.format(date); 
+	  return new Chat(chat.getName(), chat.getMessage()+"---"+now_time );
   }
 }

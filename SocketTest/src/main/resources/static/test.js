@@ -61,7 +61,11 @@ function showGreeting2(message) {
 }
 
 function showChat(chat) {
-  $("#greetings").append("<tr><td>" + chat.name + " : " + chat.message + "</td></tr>");
+  if( $("#name").val() == chat.name){
+  	$("#greetings").append("<tr><td align='right'>" + chat.name + " :: " + chat.message + "</td></tr>");
+  }else{
+  	$("#greetings").append("<tr><td align='left'>" + chat.name + " :: " + chat.message + "</td></tr>");
+  }
 }
 
 $(function () {
