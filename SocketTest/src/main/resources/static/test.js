@@ -49,7 +49,7 @@ function sendName2() {
 }
 
 function sendChat() {
-	stompClient.send("/app/chat", {}, JSON.stringify({'name': $("#name").val(), 'message': $("#chatMessage").val()}));
+	stompClient.send("/app/chat", {}, JSON.stringify({'name': $("#name").val(), 'message': $("#chatMessage").val()})); 
 }
 
 function showGreeting(message) {
@@ -66,6 +66,7 @@ function showChat(chat) {
   }else{
   	$("#greetings").append("<tr><td align='left'>" + chat.name + " :: " + chat.message + "</td></tr>");
   }
+  $("#chatMessage").val('')  ;
 }
 
 $(function () {

@@ -9,8 +9,6 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.util.HtmlUtils;
 
-import io.netty.channel.local.LocalEventLoopGroup;
-
 @Controller
 public class GreetingController {
 
@@ -32,8 +30,6 @@ public class GreetingController {
   @MessageMapping("/chat")
   @SendTo("/topic/chat")
   public Chat chat(Chat chat) throws Exception {
-	  
-	  
 	  Date date = new Date(System.currentTimeMillis()); 
 	  SimpleDateFormat format = new SimpleDateFormat("HH:mm"); 
 	  String now_time = format.format(date); 
